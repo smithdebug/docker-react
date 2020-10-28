@@ -1,0 +1,17 @@
+# base image
+FROM node:alpine
+
+# create work directory in docker container
+WORKDIR '/app'
+
+# copy the package from local to docker container
+COPY package.json .
+
+# install npm
+RUN npm install
+
+#copy all the files from current dir from local to docker
+COPY . .
+
+#run these commands in docker container CMD
+CMD ["npm", "run", "start"]

@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    build:
+#speficying the particular dockerfile from your local to build the image
+# . incontext indicates all the files are comming from the current dir      
+      context: .
+      dockerfile: Dockerfile.dev
+#mapping the localhost port to the docker container port      
+    ports:
+      - "3000:3000"
+#volume mapping      
+    volumes:
+#these files are in my local and i want to map it to my docker container
+      - /app/node_modules
+# . indicates the pwd in my local and copy the contents to /app dir in the docker container      
+      - .:/app
